@@ -1,0 +1,380 @@
+.noSelectText, br {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  -ms-user-select: none;
+      user-select: none;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+body .right {
+  float: right;
+}
+
+body header {
+  width: 100vw;
+  height: 5vh;
+}
+
+body header a {
+  margin-left: 15px;
+  width: 60px;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  display: inline-block;
+}
+
+body header a button {
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+}
+
+body .mainQueue {
+  width: 100vw;
+  height: 95vh;
+}
+
+body .mainQueue aside {
+  display: inline-block;
+  width: 20%;
+  height: 100%;
+  float: right;
+  text-align: center;
+}
+
+body .mainQueue main {
+  float: left;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(0, 1fr))[2];
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: 80%;
+  height: 100%;
+}
+
+body .mainQueue .player {
+  width: 80%;
+  height: 80%;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  border-radius: 35px;
+  overflow: hidden;
+}
+
+body .mainQueue .player .header {
+  width: 100%;
+  height: 45%;
+  display: inline-block;
+  overflow: hidden;
+}
+
+body .mainQueue .player .header img {
+  width: 35%;
+  max-height: 100%;
+  overflow: hidden;
+  border-radius: 0px 0px 15px 0px;
+}
+
+body .mainQueue .player .header section {
+  width: 65%;
+  float: right;
+}
+
+body .mainQueue .player .header section h1 {
+  font-size: 2em;
+  text-align: center;
+  width: 100%;
+  -webkit-margin-before: 1em;
+          margin-block-start: 1em;
+  -webkit-margin-after: 1em;
+          margin-block-end: 1em;
+}
+
+body .mainQueue .player .header section div {
+  float: right;
+  width: calc(100% - 20px);
+  margin: 10px;
+}
+
+body .mainQueue .player .stats {
+  height: 45%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  row-gap: 15px;
+  width: 100%;
+}
+
+body .mainQueue .player .stats div {
+  font-size: 1.5em;
+  padding: 10px;
+  text-align: center;
+}
+
+body .asideBuild {
+  position: fixed;
+  height: 100vh;
+  width: 15vw;
+}
+
+body #pickedUp {
+  position: fixed;
+}
+
+body #pickedUp table {
+  background-color: white;
+  padding: 0px;
+  margin: 0px;
+}
+
+body #pickedUp table td {
+  border: 1px solid black;
+}
+
+body .rotation90 {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+body .whileShip, body .solidShip {
+  background-color: black;
+}
+
+body .itsPlaced {
+  background-color: grey !important;
+}
+
+body .displayOff {
+  display: none;
+}
+
+body .gameReturnBlock, body .blockInfo {
+  width: 40%;
+  height: 4vh;
+  display: inline-block;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+body .gameReturnBlock div, body .blockInfo div {
+  display: inline-block;
+}
+
+body .board {
+  float: right;
+  width: 80vw;
+  display: -ms-grid;
+  display: grid;
+  height: 95vh;
+  -ms-grid-columns: 0.5fr;
+      grid-template-columns: 0.5fr;
+}
+
+body .board table {
+  width: 90%;
+  margin: 5%;
+}
+
+body .board table td {
+  margin: 0;
+  padding: 0;
+  border: 1px solid black;
+}
+
+body .board table .headerTable {
+  text-align: center;
+  font-size: 150%;
+}
+
+body .board table .cross {
+  background-image: url("../../photos/ico/close_black_24dp.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+body .board table .circle {
+  background-image: url("../../photos/ico/brightness_1_black_24dp.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+body .batteField aside {
+  width: 18vw;
+  height: 95vh;
+  float: left;
+}
+
+body .batteField section {
+  float: right;
+  width: 80vw;
+  display: -ms-grid;
+  display: grid;
+  height: 95vh;
+  -ms-grid-columns: 0.5fr;
+      grid-template-columns: 0.5fr;
+}
+
+body .batteField section table {
+  width: 90%;
+  margin: 5%;
+}
+
+body .batteField section table td {
+  margin: 0;
+  padding: 0;
+  border: 1px solid black;
+}
+
+body .batteField section table .headerTable {
+  text-align: center;
+  font-size: 150%;
+}
+
+body .batteField section table .cross {
+  background-image: url("../../photos/ico/close_black_24dp.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+body .batteField section table .circle {
+  background-image: url("../../photos/ico/brightness_1_black_24dp.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.nightMotive {
+  background-color: #27233A;
+}
+
+.nightMotive header {
+  background-color: #505168;
+}
+
+.nightMotive header a button {
+  background-color: #7D869C;
+  color: whitesmoke;
+}
+
+.nightMotive .mainQueue aside {
+  background-color: #585c6b;
+}
+
+.nightMotive .mainQueue .player {
+  background-color: #505168;
+}
+
+.nightMotive .mainQueue .board table {
+  background-color: #7D869C;
+}
+
+.nightMotive .buildFleet #busyShips {
+  background-color: #7D869C;
+}
+
+.nightMotive .buildFleet table td {
+  border: 1px solid black;
+}
+
+.nightMotive .buildFleet table .ship {
+  background-color: white;
+}
+
+.nightMotive .asideBuild {
+  background-color: #7D869C;
+}
+
+.nightMotive .pickedUp {
+  background-color: #7D869C !important;
+}
+
+.nightMotive .batteField table td {
+  background-color: #7D869C;
+}
+
+.nightMotive .batteField aside {
+  background-color: #7D869C;
+}
+
+.dayMotive {
+  color: black;
+  background-color: #f5cac5;
+}
+
+.dayMotive header {
+  background-color: #ffddd2;
+}
+
+.dayMotive header a button {
+  background-color: #ffe5d9;
+  color: black;
+}
+
+.dayMotive .mainQueue aside {
+  background-color: #fcd5cf;
+}
+
+.dayMotive .mainQueue .player {
+  background-color: #ffddd2;
+}
+
+.dayMotive .mainQueue .board table {
+  background-color: #ffe5d9;
+}
+
+.dayMotive .buildFleet #busyShips {
+  background-color: #ffe5d9;
+}
+
+.dayMotive .buildFleet table td {
+  border: 1px solid black;
+}
+
+.dayMotive .buildFleet table .ship {
+  background-color: white;
+}
+
+.dayMotive .asideBuild {
+  background-color: #ffe5d9;
+}
+
+.dayMotive .pickedUp {
+  background-color: #ffe5d9 !important;
+}
+
+.dayMotive .batteField table td {
+  background-color: #ffe5d9;
+}
+
+.dayMotive .batteField aside {
+  background-color: #ffe5d9;
+}
+
+.changeMotive {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: calc(100% - 75px);
+  left: calc(100% - 75px);
+  background-color: brown;
+  padding: 4px;
+  border-radius: 50%;
+  border: 1px solid black;
+  cursor: pointer;
+}
+/*# sourceMappingURL=style.css.map */

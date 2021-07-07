@@ -1,0 +1,174 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+body hr {
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+body #indexMainContainer {
+  width: 100vw;
+  height: 100vh;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+body #indexMainContainer #mainContent {
+  width: 50vw;
+  height: 75vh;
+  border-radius: 50px;
+}
+
+body #indexMainContainer #mainContent h1 {
+  text-align: center;
+}
+
+body #indexMainContainer #mainContent nav {
+  text-align: center;
+}
+
+body #indexMainContainer #mainContent nav div {
+  width: 25%;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+body #indexMainContainer #mainContent nav div:hover {
+  cursor: pointer;
+}
+
+body #indexMainContainer #mainContent nav .selected:hover {
+  cursor: default !important;
+}
+
+body #indexMainContainer #mainContent main {
+  padding: 30px;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body #indexMainContainer #mainContent main form {
+  width: 105%;
+}
+
+body #indexMainContainer #mainContent main form section {
+  padding: 4px;
+  border-radius: 2px;
+}
+
+body #indexMainContainer #mainContent main form input {
+  float: right;
+  border-radius: 2px;
+  border: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+body #indexMainContainer #mainContent main form button {
+  border-radius: 2px;
+  border: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  position: relative;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+body .changeMotive {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: calc(100% - 75px);
+  left: calc(100% - 75px);
+  background-color: brown;
+  padding: 4px;
+  border-radius: 50%;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.nightMotive {
+  background-color: #27233A;
+}
+
+.nightMotive hr {
+  border-color: #40434E;
+}
+
+.nightMotive #indexMainContainer #mainContent {
+  background-color: #505168;
+  border: 1px solid #40434E;
+}
+
+.nightMotive #indexMainContainer #mainContent nav div:hover {
+  background-color: #40434E;
+}
+
+.nightMotive #indexMainContainer #mainContent nav .selected {
+  background-color: #585c6b;
+}
+
+.nightMotive #indexMainContainer #mainContent nav .selected:hover {
+  background-color: #585c6b !important;
+}
+
+.nightMotive #indexMainContainer #mainContent main form section:hover {
+  background-color: #585c6b;
+}
+
+.nightMotive #indexMainContainer #mainContent main form input {
+  background-color: #7D869C;
+}
+
+.nightMotive #indexMainContainer #mainContent main form button {
+  background-color: #7D869C;
+}
+
+.dayMotive {
+  background-color: #f5cac5;
+}
+
+.dayMotive hr {
+  border-color: #f8cfc8;
+}
+
+.dayMotive #indexMainContainer #mainContent {
+  background-color: #ffddd2;
+  border: 1px solid #f8cfc8;
+}
+
+.dayMotive #indexMainContainer #mainContent nav div:hover {
+  background-color: #f8cfc8;
+}
+
+.dayMotive #indexMainContainer #mainContent nav .selected {
+  background-color: #fcd5cf;
+}
+
+.dayMotive #indexMainContainer #mainContent nav .selected:hover {
+  background-color: #fcd5cf !important;
+}
+
+.dayMotive #indexMainContainer #mainContent main form section:hover {
+  background-color: #fcd5cf;
+}
+
+.dayMotive #indexMainContainer #mainContent main form input {
+  background-color: #ffe5d9;
+}
+
+.dayMotive #indexMainContainer #mainContent main form button {
+  background-color: #ffe5d9;
+}
+/*# sourceMappingURL=index.css.map */

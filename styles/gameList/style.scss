@@ -1,0 +1,379 @@
+$backgroundColor-Dark: #27233A;
+$backgroundColorSecond-Dark: #505168;
+$backgroundColorThird-Dark: #585c6b;
+$backgroundColorFour-Dark: #7D869C;
+$gameBackground-Dark: #4F5D75;
+$borderColor-Dark: #40434E;
+$textColor-Dark: whitesmoke; 
+
+$backgroundColor-Light: #f5cac5;
+$backgroundColorSecond-Light: #ffddd2;
+$backgroundColorThird-Light: #fcd5cf;
+$backgroundColorFour-Light: #ffe5d9;
+$borderColor-Light: #f8cfc8;
+$gameBackground-Light: #ffaea8;
+$textColor-Light: black; 
+
+body {
+    padding: 0;
+    margin: 0;
+    .noDisplay {
+        display: none;
+    }
+    .right {
+        float: right;
+    }
+    .noSelectText, br {
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -o-user-select: none;
+        user-select: none;
+    }
+    .gameReturnBlock {
+        width: 40%;
+        height: 4vh;
+        display: inline-block;
+        position: relative;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        text-align: center;
+        div {
+            display: inline-block;
+        }
+    }
+    header {
+        width: 100vw;
+        height: 5vh;
+        a {
+            margin-left: 15px;
+            width: 60px;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            display: inline-block;
+            button {
+                cursor: pointer;
+                border-radius: 5px;
+                border: none;
+                padding: 5px;
+            }
+        }
+    }
+    section {
+        width: 100vw;
+        height: 95vh;
+        aside {
+            display: inline-block;
+            width: 20%;
+            height: 100%;
+            float: left;
+            text-align: center;
+        }
+        .overFlowYScrool {
+            overflow-y: scroll;
+        }
+        main {
+            display: inline-block;
+            width: 80%;
+            height: 100%;
+            float: right;
+            .gameList {
+                width: 100%;
+                display: grid;
+                .gameListGame {
+                    justify-self: center;     
+                    height: 50px;
+                    width: 90%;
+                    margin-top: 15px;
+                    border-radius: 10px;
+                    overflow: hidden;
+                    div {
+                        position: relative;
+                        text-align: center;
+                        top: 50%;
+                        transform: translateY(-50%);
+                    }
+                    .gameListGameBase{ 
+                        height: 100%;
+                        display: inline-block;
+                        width: 20%;
+                        float: left;
+                        font-size: 1.25em;
+                    }
+                    .gameListGameName {
+                        width: 30%;
+                        font-size: 1.25em;
+                        text-align: center;
+                    }
+                    .gameListGamePlayers {
+                        width: 10%;
+                    }
+                    .gameListGamePassword {
+                        img {
+                            width: 2em;
+                        }
+                    }
+                    .gameListGameJoin {
+                        width: calc(20% - 2px);
+                        cursor: pointer;
+                        div {
+                            font-size: 1.25em;
+                        }
+                    }
+                    .gameListGameJoin:hover {
+                    }
+                }
+            }
+        }
+    }
+    .gameCreateMainContainer {
+        width: 100vw;
+        height: 95vh;
+        display: grid;
+        justify-content: center;
+        align-content: center;
+        .gameCreateMain {
+            justify-self: center;
+            align-self: center;
+            width: 50vw;
+            height: 70vh;
+            border-radius: 25px;
+            h1 {
+                text-align: center;
+            }
+            hr {
+                margin-left: 15%;
+                margin-right: 15%;
+            }
+            form {
+                position: relative;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 50%;
+                section {
+                    padding: 4px;
+                    border-radius: 8px;
+                    width: 400px;
+                    height: 17px;
+                }
+                .radio {
+                    height: 80px;
+                }
+                input {
+                    float: right;
+                    border-radius: 2px;
+                    border: none;
+                    box-shadow: none;
+                }
+                button {
+                    border-radius: 2px;
+                    border: none;
+                    box-shadow: none;
+                    position: relative;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+            }
+        }
+    }
+    .mainProfil {
+        overflow-x: hidden;
+        width: 100vw;
+        height: 95vh;
+        display: grid;
+        main {
+            margin-top: 10px;
+            justify-self: center;
+            width: 40%;
+            height: 70%;
+            border-radius: 25px;
+            h1 {
+                text-align: center;
+            }
+            hr {
+                margin: 0;
+            }
+            .player {
+                height: 80%;
+                overflow: hidden;
+                .header {
+                    width: 100%;
+                    height: 45%;
+                    display: inline-block;
+                    overflow: hidden;
+                    img {
+                        width: 35%;
+                        max-height: 100%;
+                        overflow: hidden;
+                        border-radius: 0px 0px 15px 0px;
+                    }
+                    section {
+                        width: 65%;
+                        float: right;
+                        h1 {
+                            font-size: 2em;
+                            text-align: center;
+                            width: 100%;     
+                            margin-block-start: 1em;
+                            margin-block-end: 1em;               
+                        }
+                        div {
+                            float: right;
+                            width: calc(100% - 20px);
+                            margin: 10px;
+                        }
+                    }
+                }
+            }
+            .stats {
+                height: 45%;
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                row-gap: 15px;
+                width: 100%;
+                div {
+                    font-size: 1.5em;
+                    padding: 10px;
+                    text-align: center;
+                }
+            }
+            form {
+                text-align: center;
+            }
+        } 
+    }
+} 
+
+.changeMotive {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: calc(100% - 75px);
+    left:calc(100% - 75px);
+    background-color: brown;
+    padding: 4px;
+    border-radius: 50%;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.nightMotive {
+    background-color: $backgroundColor-Dark;
+    header {
+        background-color: $backgroundColorSecond-Dark;
+        a {
+            button {
+                background-color: $backgroundColorFour-Dark;
+                color: $textColor-Dark;
+            }
+        }
+    }
+    section {
+        aside {
+            background-color: $backgroundColorThird-Dark;
+        }
+        main {
+            .gameList {
+                .gameListGame {
+                    background-color: $gameBackground-Dark;
+                    .gameListGameJoin {
+                        border-left: 2px dashed $borderColor-Dark;
+                    }
+                    .gameListGameJoin:hover {
+                        background-color: $backgroundColorThird-Dark;
+                    }
+                }
+            }
+        }
+    }
+    .gameCreateMainContainer {
+        .gameCreateMain {
+            background-color: $gameBackground-Dark; 
+            border: 1px solid $borderColor-Dark;
+            hr {
+                border-color: $borderColor-Dark;
+            }
+            form {
+                section:hover {
+                    background-color: $backgroundColorThird-Dark;
+                }
+                input {
+                    background-color: $backgroundColorFour-Dark;
+                }
+                button {
+                    background-color: $backgroundColorFour-Dark;
+                }
+            }
+        }
+    }
+    .mainProfil {
+        main {
+            background-color: $backgroundColorSecond-Dark;
+            hr {
+                border-color: $borderColor-Dark;
+            }
+        } 
+    }
+} 
+
+.dayMotive {
+    color: black !important;
+    background-color: $backgroundColor-Light;
+    header {
+        background-color: $backgroundColorSecond-Light;
+        a {
+            button {
+                background-color: $backgroundColorFour-Light;
+                color: $textColor-Light;
+            }
+        }
+    }
+    section {
+        aside {
+            background-color: $backgroundColorThird-Light;
+        }
+        main {
+            .gameList {
+                .gameListGame {
+                    background-color: $gameBackground-Light;
+                    .gameListGameJoin {
+                        border-left: 2px dashed $borderColor-Light;
+                    }
+                    .gameListGameJoin:hover {
+                        background-color: $backgroundColorThird-Light;
+                    }
+                }
+            }
+        }
+    }
+    .gameCreateMainContainer {
+        .gameCreateMain {
+            background-color: $gameBackground-Light; 
+            border: 1px solid $borderColor-Light;
+            hr {
+                border-color: $borderColor-Light;
+            }
+            form {
+                section:hover {
+                    background-color: $backgroundColorThird-Light;
+                }
+                input {
+                    background-color: $backgroundColorFour-Light;
+                }
+                button {
+                    background-color: $backgroundColorFour-Light;
+                }
+            }
+        }
+    }
+    .mainProfil {
+        main {
+            background-color: $backgroundColorSecond-Light;
+            hr {
+                border-color: $borderColor-Light;
+            }
+        } 
+    }
+} 

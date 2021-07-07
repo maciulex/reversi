@@ -1,0 +1,162 @@
+$backgroundColor-Dark: #27233A;
+$backgroundColorSecond-Dark: #505168;
+$backgroundColorThird-Dark: #585c6b;
+$backgroundColorFour-Dark: #7D869C;
+$borderColor-Dark: #40434E;
+
+$backgroundColor-Light: #f5cac5;
+$backgroundColorSecond-Light: #ffddd2;
+$backgroundColorThird-Light: #fcd5cf;
+$backgroundColorFour-Light: #ffe5d9;
+$borderColor-Light: #f8cfc8;
+
+body {
+    padding: 0;
+    margin: 0;
+    hr {
+        margin-left: 15%;
+        margin-right: 15%;
+    }
+    #indexMainContainer {
+        width: 100vw;
+        height: 100vh;
+        display: grid;
+        justify-content: center;
+        align-content: center;
+        #mainContent {
+            width: 50vw;
+            height: 75vh;
+            border-radius: 50px;
+            h1{
+                text-align: center;
+            }
+            nav  {
+                text-align: center;
+                div {
+                    width: 25%;
+                    display: inline-block;
+                    border-radius: 5px;
+                }
+                div:hover {
+                    cursor: pointer;
+                }
+                .selected {
+                }
+                .selected:hover {
+                    cursor: default !important;
+                }
+            }
+            main {
+                padding: 30px;
+                display: grid;
+                justify-content: center;
+                form {
+                    section {
+                        padding: 4px;
+                        border-radius: 2px;
+                    }
+                    width: 105%;
+                    input {
+                        float: right;
+                        border-radius: 2px;
+                        border: none;
+                        box-shadow: none;
+                    }
+                    button {
+                        border-radius: 2px;
+                        border: none;
+                        box-shadow: none;
+                        position: relative;
+                        left: 50%;
+                        transform: translateX(-50%);
+                    }
+                }
+            }
+        }
+    }
+    .changeMotive {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        top: calc(100% - 75px);
+        left:calc(100% - 75px);
+        background-color: brown;
+        padding: 4px;
+        border-radius: 50%;
+        border: 1px solid black;
+        cursor: pointer;
+    }
+}
+
+.nightMotive {
+    background-color: $backgroundColor-Dark;    
+    hr {
+        border-color: $borderColor-Dark;
+    }
+    #indexMainContainer {
+        #mainContent {
+            background-color: $backgroundColorSecond-Dark;
+            border: 1px solid $borderColor-Dark;
+            nav  {
+                div:hover {
+                    background-color: $borderColor-Dark;
+                }
+                .selected {
+                    background-color: $backgroundColorThird-Dark;
+                }
+                .selected:hover {
+                    background-color: $backgroundColorThird-Dark !important;
+                }
+            }
+            main {
+                form {
+                    section:hover {
+                        background-color: $backgroundColorThird-Dark;
+                    }
+                    input {
+                        background-color: $backgroundColorFour-Dark;
+                    }
+                    button {
+                        background-color: $backgroundColorFour-Dark;
+                    }
+                }
+            }
+        }
+    }
+}
+.dayMotive {
+    background-color: $backgroundColor-Light;    
+    hr {
+        border-color: $borderColor-Light;
+    }
+    #indexMainContainer {
+        #mainContent {
+            background-color: $backgroundColorSecond-Light;
+            border: 1px solid $borderColor-Light;
+            nav  {
+                div:hover {
+                    background-color: $borderColor-Light;
+                }
+                .selected {
+                    background-color: $backgroundColorThird-Light;
+                }
+                .selected:hover {
+                    background-color: $backgroundColorThird-Light !important;
+                }
+            }
+            main {
+                form {
+                    section:hover {
+                        background-color: $backgroundColorThird-Light;
+                    }
+                    input {
+                        background-color: $backgroundColorFour-Light;
+                    }
+                    button {
+                        background-color: $backgroundColorFour-Light;
+                    }
+                }
+            }
+        }
+    }
+}
