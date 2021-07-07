@@ -19,16 +19,16 @@ function basicLoad(board) {
     board = board.split(";");
     let place = document.querySelector(".main");
     let raw = "";
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 8; i++) {
         raw += "<tr>";
-        for (let z = 0; z < 3; z++) {
-            let addClass = "";
-            if (board[i*3+z] == "1") {
-                addClass = "circle";
-            } else if (board[i*3+z] == "2") {
-                addClass = "cross";
+        for (let z = 0; z < 8; z++) {
+            let content = "";
+            if (board[i*8+z] == "1") {
+                content = '<div class="circleBlack transformAlignCenterXY"></div>';
+            } else if (board[i*8+z] == "2") {
+                content = '<div class="circleWhite transformAlignCenterXY"></div>';
             }
-            raw += `<td class="f${i*3+z} ${addClass}" onclick="guess(${i*3+z})"></td>`;
+            raw += `<td class="f${i*8+z}" onclick="guess(${i*8+z})">${content}</td>`;
         }
         raw += "</tr>";
     }
@@ -81,4 +81,4 @@ function earlyEnd() {
     xml.send();
 }
 engine();
-let interval = setInterval(engine, 800);
+//let interval = setInterval(engine, 800);

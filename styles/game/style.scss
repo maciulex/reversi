@@ -172,16 +172,6 @@ body {
                 text-align: center;
                 font-size: 150%;
             }
-            .cross {
-                background-image: url("../../photos/ico/close_black_24dp.svg");
-                background-repeat: no-repeat;
-                background-size: cover;
-            }
-            .circle {
-                background-image: url("../../photos/ico/brightness_1_black_24dp.svg");
-                background-repeat: no-repeat;
-                background-size: cover;
-            }
         }
     }
     .batteField {
@@ -208,19 +198,29 @@ body {
                     text-align: center;
                     font-size: 150%;
                 }
-                .cross {
-                    background-image: url("../../photos/ico/close_black_24dp.svg");
-                    background-repeat: no-repeat;
-                    background-size: cover;
-                }
-                .circle {
-                    background-image: url("../../photos/ico/brightness_1_black_24dp.svg");
-                    background-repeat: no-repeat;
-                    background-size: cover;
-                }
             }
         }
     }
+}
+
+.transformAlignCenterXY {
+    position: relative;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.circleWhite {
+    background-color: white;
+    width: 90%;
+    height: 90%;
+    border-radius: 100%;
+}
+.circleBlack {
+    background-color:black;
+    width: 90%;
+    height: 90%;
+    border-radius: 100%;      
 }
 
 .nightMotive {

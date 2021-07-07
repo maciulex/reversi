@@ -29,7 +29,7 @@
         exit();
     }
     $stmt -> close();
-    $sql = "SELECT status FROM gamestictactoe WHERE id = ?";
+    $sql = "SELECT status FROM reversi WHERE id = ?";
     $stmt = $connection -> prepare($sql);
     $stmt -> bind_param("i", $inGame);
     $stmt -> execute();

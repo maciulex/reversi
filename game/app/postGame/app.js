@@ -112,8 +112,8 @@ function drawBoards() {
     document.querySelector("main").innerHTML = "";
     let value = data[2];
     let raw = `<section class="board"><table><tbody>`;
-    for (let i = 0; i < 9; i++) {
-        if (i == 0 || i == 3 || i == 6) {
+    for (let i = 0; i < 64; i++) {
+        if (i % 8 == 0) {
             raw += '</tr><tr>';
         }
         switch (value[i]){
@@ -121,10 +121,10 @@ function drawBoards() {
                 raw += `<td class="tdElement"></td>`;
             break;
             case "1":
-                raw += `<td class="tdElement circle"></td>`;
+                raw += '<td class="tdElement"><div class="circleBlack transformAlignCenterXY"></div></td>';
             break;
             case "2":
-                raw += `<td class="tdElement cross"></td>`;
+                raw += '<td class="tdElement"><div class="circleWhite transformAlignCenterXY"></div></td>';
             break;
         }   
     }

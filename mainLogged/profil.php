@@ -71,8 +71,6 @@
                 $stmt -> fetch();
                 if ($avatar == "" || empty($avatar)) {
                     $avatar = "def.jpg";
-                } else {
-                    $avatar = $avatar.".jpg";
                 }
             ?>
             <a href="index.php" class="right" style="width:75px"><button>Lista gier</button></a>

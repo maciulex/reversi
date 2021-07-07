@@ -44,7 +44,7 @@
                         $stmt -> bind_result($inGame);
                         $stmt -> fetch();
                         if (intval($inGame) != 0) {
-                            $sql = "SELECT name, status FROM gamestictactoe WHERE id = $inGame";
+                            $sql = "SELECT name, status FROM reversi WHERE id = $inGame";
                             $result = $connection -> query($sql);
                             $row = $result -> fetch_object();
                             $_SESSION['serverName'] = $row -> name;

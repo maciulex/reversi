@@ -22,7 +22,7 @@
     switch ($action) {
         case 0:
             $players;
-            $sql = "SELECT name, status, playersNicks, privacy, players, lastAction, revange FROM gamestictactoe WHERE BINARY name = BINARY ?";
+            $sql = "SELECT name, status, playersNicks, privacy, players, lastAction, revange FROM reversi WHERE BINARY name = BINARY ?";
             $stmt = $connection -> prepare($sql);
             $stmt -> bind_param("s", $_SESSION['serverName']);
             $stmt -> execute();
@@ -33,7 +33,7 @@
             if ($status == "4") {
                 if (intval($revange) == 2) {
                     $status = 2;
-                    $plainBoard = "0;0;0;0;0;0;0;0;0";
+                    $plainBoard = "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0";
                     $sql = 'UPDATE gamestictactoe SET status = 2, board = ?, whosTour = 0 WHERE name = ?';
                     $stmt2 = $connection -> prepare($sql);
                     $stmt2 -> bind_param("ss", $plainBoard, $_SESSION['serverName']);
@@ -70,7 +70,7 @@
             $stmt -> close();
         break;
         case 1:
-            $sql = 'SELECT playersNicks, status, revange FROM gamestictactoe WHERE BINARY name = BINARY ?';
+            $sql = 'SELECT playersNicks, status, revange FROM reversi WHERE BINARY name = BINARY ?';
             $stmt = $connection -> prepare($sql);
             $stmt -> bind_param("s", $_SESSION['serverName']);
             $stmt -> execute();
@@ -85,7 +85,7 @@
             $stmt -> fetch();
             if ($status == "4") {
                 $revange = intval($revange)-1;
-                $sql = "UPDATE gamestictactoe SET revange = ? WHERE name = ?";
+                $sql = "UPDATE reversi SET revange = ? WHERE name = ?";
                 $stmt2 = $connection -> prepare($sql);
                 $stmt2 -> bind_param("is", $revange, $_SESSION["serverName"]);
                 $stmt2 -> execute();
@@ -118,7 +118,7 @@
                 exit();
             }
             $stmt -> close();
-            $sql = 'UPDATE gamestictactoe SET playersNicks = ?, players = players - 1 WHERE BINARY name = BINARY ?';
+            $sql = 'UPDATE reversi SET playersNicks = ?, players = players - 1 WHERE BINARY name = BINARY ?';
             $stmt = $connection -> prepare($sql);
             $stmt -> bind_param("ss", $playersNicks, $_SESSION['serverName']);
             $stmt -> execute();
@@ -130,7 +130,7 @@
             $stmt -> close();
         break;
         case 2:
-            $sql = 'SELECT playersNicks, status FROM gamestictactoe WHERE BINARY name = BINARY ?';
+            $sql = 'SELECT playersNicks, status FROM reversi WHERE BINARY name = BINARY ?';
             $stmt = $connection -> prepare($sql);
             $stmt -> bind_param("s", $_SESSION['serverName']);
             $stmt -> execute();
@@ -164,7 +164,7 @@
                 exit();
             }
             $stmt -> close();
-            $sql = 'UPDATE gamestictactoe SET playersNicks = ?, players = players - 1 WHERE BINARY name = BINARY ?';
+            $sql = 'UPDATE reversi SET playersNicks = ?, players = players - 1 WHERE BINARY name = BINARY ?';
             $stmt = $connection -> prepare($sql);
             $stmt -> bind_param("ss", $playersNicks, $_SESSION['serverName']);
             $stmt -> execute();
@@ -177,7 +177,7 @@
         break;
         case 3:
             $time = time();
-            $sql = 'SELECT playersNicks, status, players FROM gamestictactoe WHERE BINARY name = BINARY ?';
+            $sql = 'SELECT playersNicks, status, players FROM reversi WHERE BINARY name = BINARY ?';
             $stmt = $connection -> prepare($sql);
             $stmt -> bind_param("s", $_SESSION['serverName']);
             $stmt -> execute();
@@ -207,7 +207,7 @@
                 exit();
             }
             $stmt -> close();
-            $sql = 'UPDATE gamestictactoe SET status = 2, lastAction = ? WHERE BINARY name = BINARY ?';
+            $sql = 'UPDATE reversi SET status = 2, lastAction = ? WHERE BINARY name = BINARY ?';
             $stmt = $connection -> prepare($sql);
             $stmt -> bind_param("ds", $time, $_SESSION['serverName']);
             $stmt -> execute();

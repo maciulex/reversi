@@ -15,7 +15,7 @@
     $connection = new mysqli($db_host, $db_user, $db_password, $db_name);
     $players;
     $board;
-    $sql = "SELECT name, status, playersNicks, privacy, players, gameEnd, score, board FROM gamestictactoe WHERE BINARY name = BINARY ?";
+    $sql = "SELECT name, status, playersNicks, privacy, players, gameEnd, score, board FROM reversi WHERE BINARY name = BINARY ?";
     $stmt = $connection -> prepare($sql);
     $stmt -> bind_param("s", $_GET['serverName']);
     $stmt -> execute();
