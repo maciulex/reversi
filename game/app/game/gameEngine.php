@@ -80,14 +80,14 @@
                         $statement = false;
                         echo " quit 0";
                     }
-                    $sameRowCheck = ($nextPlaceRow != ceil(($localCordinateCopy+1)/8) || $nextPlaceRow != ceil(($localCordinateCopy-1)/8)) ? true : false;
+                    $NOTsameRowCheck = ($nextPlaceRow != ceil(($localCordinateCopy+1)/8)) ? true : false;
                     if ($key != -1 && $key != 1) {
-                        if (($nextPlaceRow > ceil(($localCordinateCopy+1)/8)+1 || $nextPlaceRow < ceil(($localCordinateCopy+1)/8)-1) && !$sameRowCheck) {
+                        if (($key > 0 && ($nextPlaceRow > ceil(($localCordinateCopy+1)/8)+1) || ($key < 0 && $nextPlaceRow < ceil(($localCordinateCopy+1)/8)-1)) && $NOTsameRowCheck) {
                             $statement = false;
                             echo " quit 1";
                         }
                     } else {
-                        if ($sameRowCheck) {
+                        if ($NOTsameRowCheck) {
                             $statement = false;
                             echo " quit 2";
                         }

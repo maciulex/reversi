@@ -25,6 +25,9 @@ function loadGames() {
         games = games.split(";;;");
         for (var i = 0; i < games.length-1; i++) {
             let localData = games[i].split(";;");
+            if (localData[2] == '4') {
+                var revange = "&code=revange";
+            }
             let rawGame = `                  
                 <div class="gameListGame noSelectText">
                     <div class="gameListGameBase gameListGameName">
@@ -39,7 +42,7 @@ function loadGames() {
                     <div class="gameListGameBase gameListGamePassword">
                         <div>${getIco(localData[1])}</div>
                     </div>
-                    <div class="gameListGameBase gameListGameJoin" onclick='gameJoin("${localData[0]}", "${localData[1]}")'>
+                    <div class="gameListGameBase gameListGameJoin" onclick='gameJoin("${localData[0]}", "${localData[1]}", "${revange}")'>
                         <div>${getJoinText(localData[2])}</div>
                     </div>
                 </div>`;
@@ -90,10 +93,10 @@ function loadGames() {
     }
     goXML();
 }
-function gameJoin(name, password) {
+function gameJoin(name, password, revange = "") {
     if (password == "1") {
-        window.location = "app/gameJoin.php?name="+name;
+        window.location = "app/gameJoin.php?name="+name+revange;
     } else { 
-        window.location = "app/gameJoin.php?name="+name+"&password="+prompt("Podaj hasło");
+        window.location = "app/gameJoin.php?name="+name+"&password="+prompt("Podaj hasło")+revange;
     }
 }
