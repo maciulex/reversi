@@ -33,8 +33,8 @@
             if ($status == "4") {
                 if (intval($revange) == 2) {
                     $status = 2;
-                    $plainBoard = "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0";
-                    $sql = 'UPDATE gamestictactoe SET status = 2, board = ?, whosTour = 0 WHERE name = ?';
+                    $plainBoard = "0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;2;1;0;0;0;0;0;0;1;2;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0";
+                    $sql = 'UPDATE reversi SET status = 2, board = ?, whosTour = 0 WHERE name = ?';
                     $stmt2 = $connection -> prepare($sql);
                     $stmt2 -> bind_param("ss", $plainBoard, $_SESSION['serverName']);
                     $stmt2 -> execute();

@@ -22,7 +22,7 @@
 <!DOCTYPE html>
 <html lang="pl">
     <head>
-        <title>kółko i krzyżyk!</title>
+        <title>Reversi!</title>
         <meta charset="utf-8">
         <link href="../styles/game/style.css" rel="stylesheet">
         <script>var motiveAccess = <?php  echo ((isset($_COOKIE['motive'])) ? $_COOKIE['motive'] : 0); ?>;</script>

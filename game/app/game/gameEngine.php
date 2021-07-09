@@ -38,14 +38,15 @@
                 mysqli_close($connection);
                 exit();
             } 
-            $playersNicks; $whosTour; $status; $board;
+            $changesInBoardHasBeenDone = false;
+            $playersNicks; $whosTour; $status; $board; $wholeGameScore;
             $coordinate = intval($_GET["cord"]);
-            $sql = "SELECT playersNicks, whosTour, status, board FROM reversi WHERE name = ?";
+            $sql = "SELECT playersNicks, whosTour, status, board, score FROM reversi WHERE name = ?";
             $stmt = $connection -> prepare($sql);
             $stmt -> bind_param("s", $_SESSION['serverName']);
             $stmt -> execute();
             $stmt -> store_result();
-            $stmt -> bind_result($playersNicks, $whosTour, $status, $board);
+            $stmt -> bind_result($playersNicks, $whosTour, $status, $board, $wholeGameScore);
             $stmt -> fetch();
             $playersNicks = explode(";", $playersNicks);
             $whosTour = intval($whosTour);
@@ -79,13 +80,14 @@
                         $statement = false;
                         echo " quit 0";
                     }
+                    $sameRowCheck = ($nextPlaceRow != ceil(($localCordinateCopy+1)/8) || $nextPlaceRow != ceil(($localCordinateCopy-1)/8)) ? true : false;
                     if ($key != -1 && $key != 1) {
-                        if ($nextPlaceRow > ceil(($localCordinateCopy+1)/8)+1 || $nextPlaceRow < ceil(($localCordinateCopy+1)/8)-1) {
+                        if (($nextPlaceRow > ceil(($localCordinateCopy+1)/8)+1 || $nextPlaceRow < ceil(($localCordinateCopy+1)/8)-1) && !$sameRowCheck) {
                             $statement = false;
                             echo " quit 1";
                         }
                     } else {
-                        if ($nextPlaceRow != ceil(($localCordinateCopy+1)/8)) {
+                        if ($sameRowCheck) {
                             $statement = false;
                             echo " quit 2";
                         }
@@ -106,18 +108,95 @@
                 }
                 if ($lineReady && !empty($enemyLine)) {
                     foreach ($enemyLine as $toChange) {
+                        $changesInBoardHasBeenDone = true;
                         $board[$toChange] = $myNumber;
                     } 
                 }
             }
+            if (!$changesInBoardHasBeenDone) {
+                echo "error wrong 003";
+                mysqli_close($connection);
+                exit();
+            }
+            $win = array(false, "", -1);
+            $stats = array(0,0);
+            $score = array(0,0);
+            foreach ($board as $key) {
+                if ($key == "1") {
+                    $score[0] += 1;
+                } else if ($key == "2") {
+                    $score[1] += 1;
+                } 
+            }
+
+            if ($score[0]+$score[1] == 64) {
+                if ($score[0] > $score[1]) {
+                    $win[0] = true;
+                    $win[1] = "Wygrał gracz: ".$playersNicks[0];    
+                    $win[2] = 0;
+                    $stats[0] = 1;      
+                } else if ($score[0] < $score[1]) {
+                    $win[0] = true;
+                    $win[1] = "Wygrał gracz: ".$playersNicks[1];   
+                    $win[2] = 1;
+                    $stats[1] = 1;  
+                } else {
+                    $win[0] = true;
+                    $win[1] = "Remis";
+                    $win[2] = -1;
+                }
+            }
+            if ($score[0] == 0) {
+                $win[0] = true;
+                $win[1] = "Wygrał gracz: ".$playersNicks[1];    
+                $win[2] = 1;
+                $stats[1] = 1;  
+            } else if ($score[1] == 0) {
+                $win[0] = true;
+                $win[1] = "Wygrał gracz: ".$playersNicks[0];       
+                $win[2] = 0;
+                $stats[0] = 1;  
+            }
+
             $whosTour = ($whosTour == 0) ? 1 : 0;
+
             $board = implode(';',$board);
+            $score = implode(';',$score);
+
             $TIME = time();
-            $sql = "UPDATE reversi SET whosTour = ?, lastAction = ?, board = ? WHERE name = ?";
+            $sql = "UPDATE reversi SET whosTour = ?, lastAction = ?, board = ?, activeGameScore = ? WHERE name = ?";
             $stmt = $connection -> prepare($sql);
-            $stmt -> bind_param("idss", $whosTour, $TIME, $board, $_SESSION['serverName']);
+            $stmt -> bind_param("idsss", $whosTour, $TIME, $board, $score,$_SESSION['serverName']);
             $stmt -> execute();
             $stmt -> close();
+            if ($win[0]) {
+                if ($win[2] != -1) {
+                    $wholeGameScore = explode(";",$wholeGameScore);
+                    $wholeGameScore[$win[2]] = intval($wholeGameScore[$win[2]])+1;
+                    $wholeGameScore = implode(";", $wholeGameScore);
+                    $sql = "UPDATE users SET inGame = 0, Sgames = Sgames + 1, SgamesWin = SgamesWin + ?, SgamesLose = SgamesLose + ? WHERE nickname = ?";
+                    $stmt = $connection -> prepare($sql);
+                    $stmt -> bind_param("iis", $stats[0], $stats[1], $playersNicks[0]);
+                    $stmt -> execute();
+                    $stmt -> bind_param("iis", $stats[1], $stats[0], $playersNicks[1]);
+                    $stmt -> execute();
+                    $stmt -> close();
+                } else {
+                    $sql = "UPDATE users SET inGame = 0, Sgames = Sgames + 1, SgamesDraw = SgamesDraw + 1 WHERE nickname = ?";
+                    $stmt = $connection -> prepare($sql);
+                    $stmt -> bind_param("s", $playersNicks[0]);
+                    $stmt -> execute();
+                    $stmt -> bind_param("s", $playersNicks[1]);
+                    $stmt -> execute();
+                    $stmt -> close();
+                }
+                $sql = "UPDATE reversi SET status = 3, gameEnd = ?, score = ? WHERE name = ?";
+                $stmt = $connection -> prepare($sql);
+                $stmt -> bind_param("sss", $win[1], $wholeGameScore, $_SESSION['serverName']);
+                $stmt -> execute();
+                $stmt -> close();
+
+            }
             // for ($i = -4; $i < 5; $i++) {
             //     ($i == 0) ? continue : "";
             //     if ($board[$coordinate]+$i == $enemyNumber) {
