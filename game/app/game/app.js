@@ -81,4 +81,4 @@ function earlyEnd() {
     xml.send();
 }
 engine();
-//let interval = setInterval(engine, 800);
+let interval = setInterval(engine, 800);
