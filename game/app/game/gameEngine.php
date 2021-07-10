@@ -255,6 +255,31 @@
                 }
             }
         break;
+        case 3:
+            $playersNicks; $whosTour; $status;
+            $sql = "SELECT playersNicks, whosTour, status FROM reversi WHERE name = ?";
+            $stmt = $connection -> prepare($sql);
+            $stmt -> bind_param("s", $_SESSION['serverName']);
+            $stmt -> execute();
+            $stmt -> store_result();
+            $stmt -> bind_result($playersNicks, $whosTour, $status);
+            $stmt -> fetch();
+            $playersNicks = explode(";", $playersNicks);
+            $whosTour = intval($whosTour);
+            if ($status != "2" || $playersNicks[$whosTour] != $_SESSION['nickname']) {
+                echo "error wrong 002";
+                $stmt -> close();
+                mysqli_close($connection);
+                exit();
+            }
+            $stmt -> close();
+            $whosTour = ($whosTour == 0) ? 1 : 0;
+            $sql = 'UPDATE reversi SET whosTour = ? WHERE name = ?';
+            $stmt = $connection -> prepare($sql);
+            $stmt -> bind_param("is", $whosTour, $_SESSION['serverName']);
+            $stmt -> execute();
+            $stmt -> close();
+        break;
     }
     mysqli_close($connection);
 ?>

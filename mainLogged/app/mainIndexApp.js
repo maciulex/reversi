@@ -27,6 +27,8 @@ function loadGames() {
             let localData = games[i].split(";;");
             if (localData[2] == '4') {
                 var revange = "&code=revange";
+            } else {
+                var revange = "";
             }
             let rawGame = `                  
                 <div class="gameListGame noSelectText">

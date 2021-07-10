@@ -3,7 +3,6 @@ function engine() {
     xml.onreadystatechange = function () {
         if (this.status == 200 && this.readyState == 4) {
             let data = this.responseText.split(";;;");
-            console.log(data);
             if (data[7] == "3") {
                 window.location = "postGame.php?serverName="+server;
             }
@@ -52,6 +51,7 @@ function loadAside(serverName, playersNicks, whosTour, lastAction, timeNow, time
     if (myNick == playersNicks[parseInt(whosTour)]) {
         infoP.style.backgroundColor = "green";
         infoP.innerHTML = "Twoja tura";
+        gameInfo.innerHTML += `<button onclick="giveUpTour()">Podaj turę</button>`;
     } else {
         infoP.style.backgroundColor = "red";
         infoP.innerHTML = "Poczekaj"; 
@@ -66,7 +66,6 @@ function guess(where) {
             let xml = new XMLHttpRequest;
             xml.onreadystatechange = function () {
                 if (this.status == 200 && this.readyState == 4) {
-                    console.log(this.responseText);
                     engine();
                 }
             }
@@ -78,6 +77,12 @@ function guess(where) {
 function earlyEnd() {
     let xml = new XMLHttpRequest;
     xml.open("GET", "app/game/gameEngine.php?action=2", true);
+    xml.send();
+}
+
+function giveUpTour() {
+    let xml = new XMLHttpRequest;
+    xml.open("GET", "app/game/gameEngine.php?action=3", true);
     xml.send();
 }
 engine();
